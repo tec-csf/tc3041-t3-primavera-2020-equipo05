@@ -80,4 +80,4 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ## 3. Referencias
 
-*[Incluya aquí las referencias a sitios de interés, datasets y cualquier otra información que haya utilizado para realizar la tarea y que le puedan ser de utilidad a otras personas que quieran usarlo como referencia]*
+[JSON Schema para el modelo de la base de datos](https://json-schema.org/).
