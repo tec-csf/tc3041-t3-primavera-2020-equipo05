@@ -1,0 +1,109 @@
+[
+    {
+      "title": "Alumno",
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "El id (Matricula) del alumno."
+        },
+        "nombre": {
+          "type": "string",
+          "description": "El nombre del alumno."
+        },
+        "apellidos": {
+          "type": "string",
+          "description": "El o los apellidos del alumno."
+        },
+        "f_nac": {
+          "type": "string",
+          "description": "Fecha de nacimiento."
+        },
+        "direccion": {
+          "type": "string",
+          "description": "La direccion del alumno."
+        },
+        "semestre": {
+          "description": "El semestre acreditado del alumno.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "promedio": {
+          "description": "El promedio acumulado del alumno.",
+          "type": "integer",
+          "minimum": 60,
+          "maximum": 100
+        }
+      }
+    },
+    {
+      "title": "Profesor",
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "El id (Matricula) del profesor."
+        },
+        "nombre": {
+          "type": "string",
+          "description": "El nombre del profesor."
+        },
+        "apellidos": {
+          "type": "string",
+          "description": "El o los apellidos del profesor."
+        },
+        "f_nac": {
+          "type": "string",
+          "description": "Fecha de nacimiento."
+        },
+        "direccion": {
+          "type": "string",
+          "description": "La direccion del profesor."
+        },
+        "tipo": {
+          "type": "string",
+          "description": "El tipo de profesor."
+        },
+        "sueldo": {
+          "description": "El promedio acumulado del profesor.",
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    {
+      "title": "Clase",
+      "type": "object",
+      "properties": {
+        "nombre": {
+          "type": "string",
+          "description": "El nombre de la clase."
+        },
+        "horario": {
+          "type": "string",
+          "description": "El horario de la clase."
+        },
+        "idioma": {
+          "type": "string",
+          "description": "El idioma de la clase."
+        },
+        "salon": {
+          "description": "El numero de salon de la clase.",
+          "type": "integer",
+          "minimum": 1000
+        },
+        "profesor": {
+          "type": "string",
+          "description": "El id del profesor de la clase."
+        },
+        "alumnos": {
+          "description": "Los ids de los alumnos asignados a la clase.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
