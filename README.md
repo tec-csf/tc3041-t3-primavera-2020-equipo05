@@ -80,4 +80,4 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ## 3. Referencias
 
-[JSON Schema para el modelo de la base de datos](https://json-schema.org/).
+https://json-schema.org/
