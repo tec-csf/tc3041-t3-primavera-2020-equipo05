@@ -1,0 +1,34 @@
+{
+  "title": "Clase",
+  "type": "object",
+  "properties": {
+    "nombre": {
+      "type": "string",
+      "description": "El nombre de la clase."
+    },
+    "horario": {
+      "type": "string",
+      "description": "El horario de la clase."
+    },
+    "idioma": {
+      "type": "string",
+      "description": "El idioma de la clase."
+    },
+    "salon": {
+      "description": "El numero de salon de la clase.",
+      "type": "integer",
+      "minimum": 1000
+    },
+    "profesor": {
+      "type": "string",
+      "description": "El id del profesor de la clase."
+    },
+    "alumnos": {
+      "description": "Los ids de los alumnos asignados a la clase.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

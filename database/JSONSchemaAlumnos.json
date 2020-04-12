@@ -1,0 +1,38 @@
+{
+  "title": "Alumno",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "El id (Matricula) del alumno."
+    },
+    "nombre": {
+      "type": "string",
+      "description": "El nombre del alumno."
+    },
+    "apellidos": {
+      "type": "string",
+      "description": "El o los apellidos del alumno."
+    },
+    "f_nac": {
+      "type": "string",
+      "description": "Fecha de nacimiento."
+    },
+    "direccion": {
+      "type": "string",
+      "description": "La direccion del alumno."
+    },
+    "semestre": {
+      "description": "El semestre acreditado del alumno.",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "promedio": {
+      "description": "El promedio acumulado del alumno.",
+      "type": "integer",
+      "minimum": 60,
+      "maximum": 100
+    }
+  }
+}

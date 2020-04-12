@@ -1,0 +1,35 @@
+{
+  "title": "Profesor",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "El id (Matricula) del profesor."
+    },
+    "nombre": {
+      "type": "string",
+      "description": "El nombre del profesor."
+    },
+    "apellidos": {
+      "type": "string",
+      "description": "El o los apellidos del profesor."
+    },
+    "f_nac": {
+      "type": "string",
+      "description": "Fecha de nacimiento."
+    },
+    "direccion": {
+      "type": "string",
+      "description": "La direccion del profesor."
+    },
+    "tipo": {
+      "type": "string",
+      "description": "El tipo de profesor."
+    },
+    "sueldo": {
+      "description": "El promedio acumulado del profesor.",
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}
