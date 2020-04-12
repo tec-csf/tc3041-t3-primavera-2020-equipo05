@@ -1,0 +1,135 @@
+{
+  "fields": [
+    {
+      "name": "_id",
+      "path": "_id",
+      "types": [
+        {
+          "name": "ObjectID",
+          "bsonType": "ObjectID",
+          "path": "_id",
+          "total_count": 0,
+          "probability": 1,
+          "has_duplicates": false
+        }
+      ],
+      "type": "ObjectID",
+      "has_duplicates": false,
+      "probability": 1
+    },
+    {
+      "name": "alumnos",
+      "path": "alumnos",
+      "types": [
+        {
+          "name": "Array",
+          "bsonType": "Array",
+          "path": "alumnos",
+          "types": [
+            {
+              "name": "String",
+              "bsonType": "String",
+              "path": "alumnos",
+              "total_count": 0,
+              "probability": 1,
+              "has_duplicates": false
+            }
+          ],
+          "probability": 1,
+          "average_length": 25.16
+        }
+      ],
+      "type": "Array",
+      "has_duplicates": false,
+      "probability": 1
+    },
+    {
+      "name": "horario",
+      "path": "horario",
+      "types": [
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "horario",
+          "total_count": 0,
+          "probability": 1,
+          "unique": 60,
+          "has_duplicates": true
+        }
+      ],
+      "type": "String",
+      "has_duplicates": true,
+      "probability": 1
+    },
+    {
+      "name": "idioma",
+      "path": "idioma",
+      "types": [
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "idioma",
+          "total_count": 0,
+          "probability": 1,
+          "unique": 2,
+          "has_duplicates": true
+        }
+      ],
+      "type": "String",
+      "has_duplicates": true,
+      "probability": 1
+    },
+    {
+      "name": "nombre",
+      "path": "nombre",
+      "types": [
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "nombre",
+          "total_count": 0,
+          "probability": 1,
+          "unique": 86,
+          "has_duplicates": true
+        }
+      ],
+      "type": "String",
+      "has_duplicates": true,
+      "probability": 1
+    },
+    {
+      "name": "profesor",
+      "path": "profesor",
+      "types": [
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "profesor",
+          "total_count": 0,
+          "probability": 1,
+          "has_duplicates": false
+        }
+      ],
+      "type": "String",
+      "has_duplicates": false,
+      "probability": 1
+    },
+    {
+      "name": "salon",
+      "path": "salon",
+      "types": [
+        {
+          "name": "Int32",
+          "bsonType": "Int32",
+          "path": "salon",
+          "total_count": 0,
+          "probability": 1,
+          "has_duplicates": true
+        }
+      ],
+      "type": "Int32",
+      "has_duplicates": true,
+      "probability": 1
+    }
+  ],
+}
