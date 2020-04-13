@@ -6,7 +6,7 @@
 1. *Gabriel Schlam Huber* - *A01024122* - *Santa Fe*
 2. *Eduardo Harari* - *A01025876* - *Santa Fe*
 3. *Diego Alejandro Moreno Acevedo* - *A01022113* - *Santa Fe*
-4. *[Poner aquí Nombre y Apellidos del integrante 4]* - *[Poner aquí su Matrícula]* - *[Poner aquí su campus]*
+4. *Naji M. A. Saadat* - *A01025599* - *Santa Fe*
 
 ---
 ## 1. Aspectos generales
