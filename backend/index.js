@@ -16,7 +16,23 @@ app.set('views', `../frontend`)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
-app.get('/', function(req, res, next) {
+app.get('/', (req, res) => {
+    res.render('home')
+})
+
+app.get('/profesores', (req, res) => {
+    res.render('profesores')
+})
+
+app.get('/clases', (req, res) => {
+    res.render('clases')
+})
+
+app.get('/consultas', (req, res) => {
+    res.render('consultas')
+})
+
+app.get('/alumnos', function(req, res, next) {
     mongo.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("clases");
@@ -24,14 +40,14 @@ app.get('/', function(req, res, next) {
           if (err) throw err;
           console.log(alumnos);
           db.close();
-          res.render('index', {
+          res.render('alumnos', {
               alumnos
           })
         });
     });
   });
 
-app.get('/alumno/:id', function(req, res, next) {
+app.get('/detalleAlumno/:id', function(req, res, next) {
     const idAlumno = req.params.id;
 
     mongo.connect(url, function(err, db) {
@@ -43,14 +59,14 @@ app.get('/alumno/:id', function(req, res, next) {
             console.log(alumnos[0]);
             var alumno = alumnos[0]
             db.close();
-            res.render('alumno', {
+            res.render('detalleAlumno', {
                 alumno
           })
         });
     });
   });
 
-app.get('/ingresar', (req, res) => {
+app.get('/ingresarAlumno', (req, res) => {
     mongo.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("clases");
@@ -62,14 +78,14 @@ app.get('/ingresar', (req, res) => {
             var newID = "A" + next
             db.close();
 
-            res.render('ingresar', {
+            res.render('ingresarAlumno', {
                 newID
         })
         } else {
             var newID = "A0" + next
             db.close();
 
-            res.render('ingresar', {
+            res.render('ingresarAlumno', {
                 newID
         })
         }
@@ -79,7 +95,7 @@ app.get('/ingresar', (req, res) => {
 
 })
 
-app.post('/ingresar/guardar', (req, res) => {
+app.post('/ingresarAlumno/guardar', (req, res) => {
     var item = {
         _id: req.body.id,
         nombre: req.body.nombre,
@@ -100,10 +116,10 @@ app.post('/ingresar/guardar', (req, res) => {
         });
     });
     
-    res.redirect('/');
+    res.redirect('/alumnos');
 })
 
-app.get('/editar/:id', function(req, res, next) {
+app.get('/editarAlumno/:id', function(req, res, next) {
     const idAlumno = req.params.id;
 
     mongo.connect(url, function(err, db) {
@@ -115,14 +131,14 @@ app.get('/editar/:id', function(req, res, next) {
             console.log(alumnos[0]);
             var alumno = alumnos[0]
             db.close();
-            res.render('editar', {
+            res.render('editarAlumno', {
                 alumno
           })
         });
     });
 });
 
-app.post('/editar/guardar', (req, res) => {
+app.post('/editarAlumno/guardar', (req, res) => {
     const idAlumno = req.body.id;
     console.log(idAlumno)
 
@@ -147,10 +163,10 @@ app.post('/editar/guardar', (req, res) => {
         });
     });
     
-    res.redirect('/');
+    res.redirect('/alumnos');
 })
 
-app.get('/borrar/:id', function(req, res, next) {
+app.get('/borrarAlumno/:id', function(req, res, next) {
     const idAlumno = req.params.id;
 
     mongo.connect(url, function(err, db) {
@@ -162,14 +178,14 @@ app.get('/borrar/:id', function(req, res, next) {
             console.log(alumnos[0]);
             var alumno = alumnos[0]
             db.close();
-            res.render('borrar', {
+            res.render('borrarAlumno', {
                 alumno
           })
         });
     });
 });
 
-app.post('/borrar', (req, res) => {
+app.post('/borrarAlumno', (req, res) => {
     const idAlumno = req.body.id;
     console.log(idAlumno)
 
@@ -194,7 +210,7 @@ app.post('/borrar', (req, res) => {
         });
     });
     
-    res.redirect('/');
+    res.redirect('/alumnos');
 })
 
 app.listen(4000, () => {

@@ -1,0 +1,46 @@
+@layout('layouts.app')
+
+@section('content')
+    <div class="row justify-content pt-1">
+        <div class="col-10 p-1">
+            <h1 class="display-4">Colección Alumnos</h1>
+            <div class="col-3 offset-9">
+                <a href="/ingresarAlumno" class="btn btn-primary text-right">Ingresar alumno</a>
+            </div>
+        </div>
+    </div>
+    <div class="row m-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Matricula</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Fecha de Nacimiento</th>
+                    <th scope="col">Semestre</th>
+                    <th scope="col">Promedio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @each(alumno in alumnos)
+                <tr>
+                    <th>{{alumno._id}}</th>
+                    <td>{{alumno.nombre}}</td>
+                    <td>{{alumno.apellidos}}</td>
+                    <td>{{alumno.f_nac}}</td>
+                    <td>{{alumno.semestre}}</td>
+                    <td>{{alumno.promedio}}</td>
+                    <td>
+                        <a href="/detalleAlumno/{{alumno._id}}" class="btn btn-success text-right">Detalle</a>
+                        <a href="/editarAlumno/{{alumno._id}}" class="btn btn-primary text-right">Editar</a>
+                        <a href="/borrarAlumno/{{alumno._id}}" class="btn btn-danger text-right">Borrar</a>
+                    </td>
+                </tr>
+                @endeach
+            </tbody>
+        </table>
+    </div>
+
+
+@endsection

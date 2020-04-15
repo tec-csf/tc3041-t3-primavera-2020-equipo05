@@ -1,0 +1,23 @@
+@layout('layouts.app')
+
+@section('content')
+    <table class="table">
+        <div class="row justify-content pt-1">
+            <div class="col-10 p-1">
+                <h1 class="display-4">Elige una consulta</h1>
+            </div>
+        </div>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="/alumnos" class="btn btn-success btn-lg text-right">Unwind</a>
+                    <a href="/profesores" class="btn btn-primary btn-lg text-right">Lookup</a>
+                    <a href="/clases" class="btn btn-info btn-lg text-right">graphLookup</a>
+                    <a href="/consultas" class="btn btn-secondary btn-lg text-right">geoNear</a>
+                    <a href="/consultas" class="btn btn-dark btn-lg text-right">facet</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+@endsection

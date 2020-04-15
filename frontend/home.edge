@@ -1,0 +1,22 @@
+@layout('layouts.app')
+
+@section('content')
+    <table class="table">
+        <div class="row justify-content pt-2">
+            <div class="col-10 p-2">
+              <h1 class="display-3">Elige una opción</h1>
+            </div>
+        </div>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="/alumnos" class="btn btn-success btn-lg text-right">Alumnos</a>
+                    <a href="/profesores" class="btn btn-primary btn-lg text-right">Profesores</a>
+                    <a href="/clases" class="btn btn-info btn-lg text-right">Clases</a>
+                    <a href="/consultas" class="btn btn-secondary btn-lg text-right">Consultas</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+@endsection

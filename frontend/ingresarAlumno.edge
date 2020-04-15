@@ -1,0 +1,54 @@
+@layout('layouts.app')
+
+@section('content')
+    <div class="row justify-content-center pt-1">
+        <div class="col-10 p-1">
+            <h1 class="display-6">Insertar Alumnos</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center pt-2">
+        <div class="col-10 p-3">
+            <form action="/ingresarAlumno/guardar" method="POST">
+                <div class="form-group">
+                    <label for="">Matricula</label>
+                    <input type="text" class="form-control" name="id" value="{{newID}}" required readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" placeholder="Ingresa nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Apellidos</label>
+                    <input type="text" class="form-control" name="apellidos" placeholder="Ingresa apellidos" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Fecha Nacimiento</label>
+                    <input type="date" class="form-control" name="f_nac" placeholder="Ingresa fecha de nacimiento" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Dirección </label>
+                    <input type="text" class="form-control" name="direccion" placeholder="Ingresa direccion" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Semestre</label>
+                    <input type="number" class="form-control" name="semestre" placeholder="Ingresa semestre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Promedio</label>
+                    <input type="number" class="form-control" name="promedio" placeholder="Ingresa promedio" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+
+@endsection
