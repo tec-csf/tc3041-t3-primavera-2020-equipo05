@@ -491,6 +491,46 @@ app.post('/editarClase/guardar', (req, res) => {
     res.redirect('/clases');
 })
 
+// BORRAR CLASE (DESPLEGAR DATOS)//
+app.get('/borrarClase/:id', (req, res) => {
+    const idClase = new mong.ObjectID(req.params.id);
+
+    mongo.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("clases");
+        var query = { _id: idClase };
+        dbo.collection("clases").find(query).toArray(function(err, clases) {
+            if (err) throw err;
+            console.log(clases[0]);
+            var clase = clases[0]
+            db.close();
+            res.render('borrarClase', {
+                clase
+          })
+        });
+    });
+});
+
+// BORRAR CLASE (GUARDAR A DB)//
+app.post('/borrarClase', (req, res) => {
+    const idClase = new mong.ObjectID(req.body.id);
+    console.log(idClase)
+
+    mongo.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("clases");
+        var query = { _id: idClase };
+        console.log(query)
+        dbo.collection("clases").deleteOne(query, function(err, result) {
+            if (err) throw err;
+            console.log('Item deleted');
+            db.close();
+        });
+    });
+    
+    res.redirect('/clases');
+})
+
 app.get('/consultas', (req, res) => {
     res.render('consultas')
 })
