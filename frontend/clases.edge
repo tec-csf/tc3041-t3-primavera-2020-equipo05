@@ -5,7 +5,7 @@
         <div class="col-10 p-1">
             <h1 class="display-4">Colección Clases</h1>
             <div class="col-3 offset-9">
-                <a href="/ingresarAlumno" class="btn btn-primary text-right">Ingresar alumno</a>
+                <a href="/ingresarClase" class="btn btn-primary text-right">Ingresar Clase</a>
             </div>
         </div>
     </div>
@@ -13,28 +13,26 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Matricula</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Fecha de Nacimiento</th>
-                    <th scope="col">Semestre</th>
-                    <th scope="col">Promedio</th>
+                    <th style="width: 300px;">Nombre</th>
+                    <th>Horario</th>
+                    <th>Idioma</th>
+                    <th>Salon</th>
+                    <th>Profesor</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @each(alumno in alumnos)
+                @each(clase in clases)
                 <tr>
-                    <th>{{alumno._id}}</th>
-                    <td>{{alumno.nombre}}</td>
-                    <td>{{alumno.apellidos}}</td>
-                    <td>{{alumno.f_nac}}</td>
-                    <td>{{alumno.semestre}}</td>
-                    <td>{{alumno.promedio}}</td>
+                    <th>{{clase.nombre}}</th>
+                    <td>{{clase.horario}}</td>
+                    <td>{{clase.idioma}}</td>
+                    <td>{{clase.salon}}</td>
+                    <td>{{clase.profesor}}</td>
                     <td>
-                        <a href="/detalleAlumno/{{alumno._id}}" class="btn btn-success text-right">Detalle</a>
-                        <a href="/editarAlumno/{{alumno._id}}" class="btn btn-primary text-right">Editar</a>
-                        <a href="/borrarAlumno/{{alumno._id}}" class="btn btn-danger text-right">Borrar</a>
+                        <a href="/detalleClase/{{clase._id}}" class="btn btn-success text-right">Detalle</a>
+                        <a href="/editarClase/{{clase._id}}" class="btn btn-primary text-right">Editar</a>
+                        <a href="/borrarClase/{{clase._id}}" class="btn btn-danger text-right">Borrar</a>
                     </td>
                 </tr>
                 @endeach

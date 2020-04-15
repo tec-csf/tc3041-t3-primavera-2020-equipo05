@@ -10,42 +10,46 @@
         <div class="col-10 p-3">
             <form>
                 <div class="form-group">
-                    <label for="">Matricula</label>
-                    <input type="text" class="form-control" value="{{alumno._id}}">
+                    <label for="">Id</label>
+                    <input type="text" class="form-control" value="{{clase._id}}" readonly>
                 </div>
                 
                 <div class="form-group">
                     <label for="">Nombre</label>
-                    <input type="text" class="form-control" value="{{alumno.nombre}}">
+                    <input type="text" class="form-control" value="{{clase.nombre}}">
                 </div>
 
                 <div class="form-group">
-                    <label for="">Apellidos</label>
-                    <input type="text" class="form-control" value="{{alumno.apellidos}}">
+                    <label for="">Horario</label>
+                    <input type="text" class="form-control" value="{{clase.horario}}">
                 </div>
 
                 <div class="form-group">
-                    <label for="">Fecha Nacimiento</label>
-                    <input type="date" class="form-control" value="{{alumno.f_nac}}">
+                    <label for="">Idioma</label>
+                    <input type="text" class="form-control" value="{{clase.idioma}}">
                 </div>
 
                 <div class="form-group">
-                    <label for="">Dirección </label>
-                    <input type="text" class="form-control" value="{{alumno.direccion}}">
+                    <label for="">Salon </label>
+                    <input type="number" class="form-control" value="{{clase.salon}}">
                 </div>
 
                 <div class="form-group">
-                    <label for="">Semestre</label>
-                    <input type="number" class="form-control" value="{{alumno.semestre}}">
+                    <label for="">Profesor</label>
+                    <input type="text" class="form-control" value="{{clase.profesor}}">
                 </div>
 
                 <div class="form-group">
-                    <label for="">Promedio</label>
-                    <input type="number" class="form-control" value="{{alumno.promedio}}">
+                    <label for="">Alumnos</label>
+                    <ol id="alumnos">
+                        @each(alumno in clase.alumnos)
+                            <li>{{alumno}}</li>
+                        @endeach
+                    </ol>
                 </div>
 
                 <div class="form-group">
-                    <a href="/alumnos" class="btn btn-primary"> Regresar </a>
+                    <a href="/clases" class="btn btn-primary"> Regresar </a>
                 </div>
             </form>
         </div>
