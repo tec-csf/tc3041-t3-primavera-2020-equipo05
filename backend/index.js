@@ -25,7 +25,20 @@ app.get('/profesores', (req, res) => {
 })
 
 app.get('/clases', (req, res) => {
-    res.render('clases')
+    mongo.connect(url, function(err, db) {
+        if (err) throw err;
+            var dbo = db.db("clases");
+            dbo.collection("clases").find({}, {projection: { _id : 0} }).limit(6).toArray(function(err, clases) {
+            if (err) throw err;
+            console.log(clases);
+            //console.log(clases[0].alumnos)
+            //console.log(clases[0].alumnos[0])
+            db.close();
+            res.render('clases', {
+                clases
+          })
+        });
+    });
 })
 
 app.get('/consultas', (req, res) => {

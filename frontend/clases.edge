@@ -9,28 +9,32 @@
             </div>
         </div>
     </div>
-    <div class="row m-3">
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Matricula</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Fecha de Nacimiento</th>
-                    <th scope="col">Semestre</th>
-                    <th scope="col">Promedio</th>
+                    <th style="width: 260px;">Nombre</th>
+                    <th>Horario</th>
+                    <th>Idioma</th>
+                    <th>Salon</th>
+                    <th>Profesor</th>
+                    <th>Alumnos</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @each(alumno in alumnos)
+                @each(clase in clases)
                 <tr>
-                    <th>{{alumno._id}}</th>
-                    <td>{{alumno.nombre}}</td>
-                    <td>{{alumno.apellidos}}</td>
-                    <td>{{alumno.f_nac}}</td>
-                    <td>{{alumno.semestre}}</td>
-                    <td>{{alumno.promedio}}</td>
+                    <th>{{clase.nombre}}</th>
+                    <td>{{clase.horario}}</td>
+                    <td>{{clase.idioma}}</td>
+                    <td>{{clase.salon}}</td>
+                    <td>{{clase.profesor}}</td>
+                    <td><select id="alumnos">
+                        @each(alumno in clase.alumnos)
+                            <option value="{{alumno}}">{{alumno}}</option>
+                        @endeach
+                      </select>
+                    </td>
                     <td>
                         <a href="/detalleAlumno/{{alumno._id}}" class="btn btn-success text-right">Detalle</a>
                         <a href="/editarAlumno/{{alumno._id}}" class="btn btn-primary text-right">Editar</a>
@@ -40,7 +44,6 @@
                 @endeach
             </tbody>
         </table>
-    </div>
 
 
 @endsection
