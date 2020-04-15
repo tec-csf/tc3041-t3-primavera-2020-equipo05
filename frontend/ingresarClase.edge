@@ -8,40 +8,35 @@
     </div>
     <div class="row justify-content-center pt-2">
         <div class="col-10 p-3">
-            <form action="/ingresarAlumno/guardar" method="POST">
-                <div class="form-group">
-                    <label for="">Matricula</label>
-                    <input type="text" class="form-control" name="id" value="{{newID}}" required readonly>
-                </div>
-                
+            <form action="/ingresarClase/guardar" method="POST">
                 <div class="form-group">
                     <label for="">Nombre</label>
                     <input type="text" class="form-control" name="nombre" placeholder="Ingresa nombre" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Apellidos</label>
-                    <input type="text" class="form-control" name="apellidos" placeholder="Ingresa apellidos" required>
+                    <label for="">Horario</label>
+                    <input type="text" class="form-control" name="horario" placeholder="Ej. 10:00 a 13:00 Ju" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Fecha Nacimiento</label>
-                    <input type="date" class="form-control" name="f_nac" placeholder="Ingresa fecha de nacimiento" required>
+                    <label for="">Idioma</label>
+                    <input type="text" class="form-control" name="idioma" placeholder="Ingresa idioma" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Dirección </label>
-                    <input type="text" class="form-control" name="direccion" placeholder="Ingresa direccion" required>
+                    <label for="">Salon </label>
+                    <input type="number" class="form-control" name="salon" placeholder="Ingresa salon" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Semestre</label>
-                    <input type="number" class="form-control" name="semestre" placeholder="Ingresa semestre" required>
+                    <label for="">Profesor</label>
+                    <input type="text" class="form-control" name="profesor" placeholder="Ingresa profesor" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Promedio</label>
-                    <input type="number" class="form-control" name="promedio" placeholder="Ingresa promedio" required>
+                    <label for="">Alumnos (dividido por comas)</label>
+                    <input type="text" class="form-control" name="alumnos" placeholder="Ej. A08036070, A09058470" required>
                 </div>
 
                 <div class="form-group">
