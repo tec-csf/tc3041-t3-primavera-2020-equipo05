@@ -102,8 +102,8 @@ app.post('/ingresarAlumno/guardar', (req, res) => {
         apellidos: req.body.apellidos,
         f_nac: req.body.f_nac,
         direccion: req.body.direccion,
-        semestre: req.body.semestre,
-        promedio: req.body.promedio
+        semestre: parseInt(req.body.semestre),
+        promedio: parseInt(req.body.promedio)
     };
 
     mongo.connect(url, function(err, db) {
@@ -147,8 +147,8 @@ app.post('/editarAlumno/guardar', (req, res) => {
         apellidos: req.body.apellidos,
         f_nac: req.body.f_nac,
         direccion: req.body.direccion,
-        semestre: req.body.semestre,
-        promedio: req.body.promedio
+        semestre: parseInt(req.body.semestre),
+        promedio: parseInt(req.body.promedio)
     };
 
     mongo.connect(url, function(err, db) {
@@ -188,15 +188,6 @@ app.get('/borrarAlumno/:id', function(req, res, next) {
 app.post('/borrarAlumno', (req, res) => {
     const idAlumno = req.body.id;
     console.log(idAlumno)
-
-    var item = {
-        nombre: req.body.nombre,
-        apellidos: req.body.apellidos,
-        f_nac: req.body.f_nac,
-        direccion: req.body.direccion,
-        semestre: req.body.semestre,
-        promedio: req.body.promedio
-    };
 
     mongo.connect(url, function(err, db) {
         if (err) throw err;
