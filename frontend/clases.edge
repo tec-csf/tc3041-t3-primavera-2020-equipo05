@@ -5,7 +5,7 @@
         <div class="col-10 p-1">
             <h1 class="display-4">Colección Clases</h1>
             <div class="col-3 offset-9">
-                <a href="/ingresarAlumno" class="btn btn-primary text-right">Ingresar alumno</a>
+                <a href="/ingresarClase" class="btn btn-primary text-right">Ingresar Clase</a>
             </div>
         </div>
     </div>
@@ -29,11 +29,12 @@
                     <td>{{clase.idioma}}</td>
                     <td>{{clase.salon}}</td>
                     <td>{{clase.profesor}}</td>
-                    <td><select id="alumnos">
-                        @each(alumno in clase.alumnos)
-                            <option value="{{alumno}}">{{alumno}}</option>
-                        @endeach
-                      </select>
+                    <td>
+                        <select id="alumnos">
+                            @each(alumno in clase.alumnos)
+                                <option value="{{alumno}}">{{alumno}}</option>
+                            @endeach
+                        </select>
                     </td>
                     <td>
                         <a href="/detalleAlumno/{{alumno._id}}" class="btn btn-success text-right">Detalle</a>

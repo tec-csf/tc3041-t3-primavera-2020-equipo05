@@ -5,7 +5,7 @@
         <div class="col-10 p-1">
             <h1 class="display-4">Colección Profesores</h1>
             <div class="col-3 offset-9">
-                <a href="/ingresarAlumno" class="btn btn-primary text-right">Ingresar alumno</a>
+                <a href="/ingresarProfesor" class="btn btn-primary text-right">Ingresar profesor</a>
             </div>
         </div>
     </div>
@@ -17,24 +17,24 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Fecha de Nacimiento</th>
-                    <th scope="col">Semestre</th>
-                    <th scope="col">Promedio</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Sueldo</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @each(alumno in alumnos)
+                @each(profesor in profesores)
                 <tr>
-                    <th>{{alumno._id}}</th>
-                    <td>{{alumno.nombre}}</td>
-                    <td>{{alumno.apellidos}}</td>
-                    <td>{{alumno.f_nac}}</td>
-                    <td>{{alumno.semestre}}</td>
-                    <td>{{alumno.promedio}}</td>
+                    <th>{{profesor._id}}</th>
+                    <td>{{profesor.nombre}}</td>
+                    <td>{{profesor.apellidos}}</td>
+                    <td>{{profesor.f_nac}}</td>
+                    <td>{{profesor.tipo}}</td>
+                    <td>{{profesor.sueldo}}</td>
                     <td>
-                        <a href="/detalleAlumno/{{alumno._id}}" class="btn btn-success text-right">Detalle</a>
-                        <a href="/editarAlumno/{{alumno._id}}" class="btn btn-primary text-right">Editar</a>
-                        <a href="/borrarAlumno/{{alumno._id}}" class="btn btn-danger text-right">Borrar</a>
+                        <a href="/detalleProfesor/{{profesor._id}}" class="btn btn-success text-right">Detalle</a>
+                        <a href="/editarProfesor/{{profesor._id}}" class="btn btn-primary text-right">Editar</a>
+                        <a href="/borrarProfesor/{{profesor._id}}" class="btn btn-danger text-right">Borrar</a>
                     </td>
                 </tr>
                 @endeach
