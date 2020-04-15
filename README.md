@@ -186,8 +186,10 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ## 2.5 Pasos a seguir para utilizar la aplicación
 
+
 *[Incluya aquí una guía paso a paso para poder utilizar la aplicación, desde la clonación del repositorio hasta el despliegue de la solución en una plataforma en la nube.]*
 
 ## 3. Referencias
 
 https://json-schema.org/
+https://medium.com/@svinkle/publish-and-share-your-own-website-for-free-with-github-2eff049a1cb5
