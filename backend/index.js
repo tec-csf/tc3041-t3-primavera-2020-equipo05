@@ -112,7 +112,7 @@ app.post('/ingresarAlumno/guardar', (req, res) => {
         });
     });
     
-    res.redirect('/alumnos');
+    res.redirect('/alumnos/1');
 })
 
 // EDITAR ALUMNO (DESPLEGAR DATOS)//
@@ -161,7 +161,7 @@ app.post('/editarAlumno/guardar', (req, res) => {
         });
     });
     
-    res.redirect('/alumnos');
+    res.redirect('/alumnos/1');
 })
 
 // BORRAR ALUMNO (DESPLEGAR DATOS)//
@@ -201,7 +201,7 @@ app.post('/borrarAlumno', (req, res) => {
         });
     });
     
-    res.redirect('/alumnos');
+    res.redirect('/alumnos/1');
 })
 
 // PROFESORES //
@@ -295,7 +295,7 @@ app.post('/ingresarProfesor/guardar', (req, res) => {
         });
     });
     
-    res.redirect('/profesores');
+    res.redirect('/profesores/1');
 })
 
 // EDITAR PROFESOR (DESPLEGAR DATOS)//
@@ -344,7 +344,7 @@ app.post('/editarProfesor/guardar', (req, res) => {
         });
     });
     
-    res.redirect('/profesores');
+    res.redirect('/profesores/1');
 })
 
 // BORRAR PROFESOR (DESPLEGAR DATOS)//
@@ -384,7 +384,7 @@ app.post('/borrarProfesor', (req, res) => {
         });
     });
     
-    res.redirect('/profesores');
+    res.redirect('/profesores/1');
 })
 
 // CLASES //
@@ -454,7 +454,7 @@ app.post('/ingresarClase/guardar', (req, res) => {
         });
     });
     
-    res.redirect('/clases');
+    res.redirect('/clases/1');
 })
 
 // EDITAR CLASE (DESPLEGAR DATOS)//
@@ -503,7 +503,7 @@ app.post('/editarClase/guardar', (req, res) => {
         });
     });
     
-    res.redirect('/clases');
+    res.redirect('/clases/1');
 })
 
 // BORRAR CLASE (DESPLEGAR DATOS)//
@@ -543,7 +543,7 @@ app.post('/borrarClase', (req, res) => {
         });
     });
     
-    res.redirect('/clases');
+    res.redirect('/clases/1');
 })
 
 app.get('/consultas', (req, res) => {

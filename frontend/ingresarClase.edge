@@ -21,17 +21,24 @@
 
                 <div class="form-group">
                     <label for="">Idioma</label>
-                    <input type="text" class="form-control" name="idioma" placeholder="Ingresa idioma" required>
+                    <select class="form-control" name="idioma" required>
+                        <option>Español</option>
+                        <option>Ingles</option>
+                        <option>Frances</option>
+                        <option>Portugues</option>
+                        <option>Italiano</option>
+                        <option>Aleman</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label for="">Salon </label>
-                    <input type="number" class="form-control" name="salon" placeholder="Ingresa salon" required>
+                    <input type="text" class="form-control" name="salon" pattern="[0-9]{4}" placeholder="Ingresa salon" required>
                 </div>
 
                 <div class="form-group">
                     <label for="">Profesor</label>
-                    <input type="text" class="form-control" name="profesor" placeholder="Ingresa profesor" required>
+                    <input type="text" class="form-control" name="profesor" pattern=".{9}" placeholder="Ej. L08036070" required>
                 </div>
 
                 <div class="form-group">
