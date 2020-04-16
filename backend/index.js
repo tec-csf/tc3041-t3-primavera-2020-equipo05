@@ -22,20 +22,25 @@ app.get('/', (req, res) => {
 })
 
 // ALUMNOS //
-app.get('/alumnos', (req, res) => {
-    mongo.connect(url, function(err, db) {
+app.get('/alumnos/:page', async (req, res) => {
+    const resPerPage = 10;
+    const page = req.params.page;
+
+    mongo.connect(url, async function(err, db) {
         if (err) throw err;
         var dbo = db.db("clases");
-        dbo.collection("alumnos").find({}, { projection: { direccion : 0} }).limit(6).toArray(function(err, alumnos) {
-          if (err) throw err;
-          console.log(alumnos);
-          db.close();
-          res.render('alumnos', {
-              alumnos
-          })
-        });
+        const alumnos = await dbo.collection("alumnos").find({}, { projection: { direccion : 0} }).skip((resPerPage * page) - resPerPage).limit(resPerPage).toArray();
+        const numAlumnos = await dbo.collection("alumnos").count({});
+
+        console.log(alumnos)
+
+        res.render('alumnos', {
+            alumnos: alumnos,
+            currentPage: parseInt(page),
+            pages: Math.ceil(numAlumnos / resPerPage),
+        })
     });
-  });
+});
 
 // DETALLE ALUMNO //
 app.get('/detalleAlumno/:id', (req, res) => {
@@ -200,18 +205,23 @@ app.post('/borrarAlumno', (req, res) => {
 })
 
 // PROFESORES //
-app.get('/profesores', (req, res) => {
-    mongo.connect(url, function(err, db) {
+app.get('/profesores/:page', async (req, res) => {
+    const resPerPage = 10;
+    const page = req.params.page;
+
+    mongo.connect(url, async function(err, db) {
         if (err) throw err;
         var dbo = db.db("clases");
-        dbo.collection("profesores").find({}, { projection: { direccion : 0} }).limit(6).toArray(function(err, profesores) {
-          if (err) throw err;
-          console.log(profesores);
-          db.close();
-          res.render('profesores', {
-              profesores
-          })
-        });
+        const profesores = await dbo.collection("profesores").find({}, { projection: { direccion : 0} }).skip((resPerPage * page) - resPerPage).limit(resPerPage).toArray();
+        const numProfesores = await dbo.collection("profesores").count({});
+
+        console.log(profesores)
+
+        res.render('profesores', {
+            profesores: profesores,
+            currentPage: parseInt(page),
+            pages: Math.ceil(numProfesores / resPerPage),
+        })
     });
 });
 
@@ -378,20 +388,25 @@ app.post('/borrarProfesor', (req, res) => {
 })
 
 // CLASES //
-app.get('/clases', (req, res) => {
-    mongo.connect(url, function(err, db) {
+app.get('/clases/:page', async (req, res) => {
+    const resPerPage = 10;
+    const page = req.params.page;
+
+    mongo.connect(url, async function(err, db) {
         if (err) throw err;
-            var dbo = db.db("clases");
-            dbo.collection("clases").find({}).limit(6).toArray(function(err, clases) {
-            if (err) throw err;
-            console.log(clases);
-            db.close();
-            res.render('clases', {
-                clases
-          })
-        });
+        var dbo = db.db("clases");
+        const clases = await dbo.collection("clases").find({}, { projection: { direccion : 0} }).skip((resPerPage * page) - resPerPage).limit(resPerPage).toArray();
+        const numClases = await dbo.collection("clases").count({});
+
+        console.log(clases)
+
+        res.render('clases', {
+            clases: clases,
+            currentPage: parseInt(page),
+            pages: Math.ceil(numClases / resPerPage),
+        })
     });
-})
+});
 
 // DETALLE CLASE //
 app.get('/detalleClase/:id', (req, res) => {

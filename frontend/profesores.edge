@@ -42,5 +42,48 @@
         </table>
     </div>
 
+    <div class="prof-pagination">
+        <ul class="pagination justify-content-center">
+            @if(currentPage == 1 && pages > 1)
+            <li class="page-item disabled"><a class="page-link" href="/profesores/{{1}}"> 
+                <span> Inicio</span>
+            </a></li>
+            <li class="page-item"><a class="page-link" href="/profesores/{{currentPage + 1}}"> 
+                <span> {{currentPage + 1}}</span>
+            </a></li>
+            <li class="page-item"><a class="page-link" href="/profesores/{{pages}}"> 
+                <span> Fin</span>
+            </a></li>
+        
+            @elseif(currentPage < pages) 
+            <li class="page-item"><a class="page-link" href="/profesores/{{1}}"> 
+                <span> Inicio</span>
+            </a></li>
+            <li class="page-item"><a class="page-link" href="/profesores/{{currentPage - 1}}"> 
+                <span> {{currentPage - 1}}</span>
+            </a></li>
+        
+            <li class="page-item"><a class="page-link" href="/profesores/{{currentPage + 1}}"> 
+                <span> {{currentPage + 1}}</span>
+            </a></li>
+            <li class="page-item"><a class="page-link" href="/profesores/{{pages}}"> 
+                <span> Fin</span>
+            </a></li>
+
+            @elseif(currentPage == pages && pages > 1) 
+            <li class="page-item"><a class="page-link" href="/profesores/{{1}}"> 
+                <span> Inicio</span>
+            </a></li>
+            <li class="page-item"><a class="page-link" href="/profesores/{{currentPage - 1}}"> 
+                <span> {{currentPage - 1}}</span>
+            </a></li>
+            <li class="page-item disabled"><a class="page-link" href="/profesores/{{pages}}"> 
+                <span> Fin</span>
+            </a></li>
+            @endif
+        </ul>
+        <br>
+        <br>
+    </div>
 
 @endsection
