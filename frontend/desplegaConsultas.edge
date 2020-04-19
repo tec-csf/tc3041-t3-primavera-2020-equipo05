@@ -1,0 +1,139 @@
+@layout('layouts.app')
+
+@section('content')
+    <div class="row justify-content pt-1">
+        <div class="col-10 p-1">
+            @if(type == "unwind")
+                <h1 class="display-4">Consulta Unwind</h1>
+                <p class="card-text">Con el operador Unwind, obtén el sueldo de cada profesor ordenado por el mismo.</p>
+
+            @elseif(type == "lookup")
+                <h1 class="display-4">Consulta Lookup</h1>
+                <p class="card-text">Con el operador Lookup, obtén el promedio de los alumnos en una clase ordenados por el promedio de clase.</p>
+
+            @elseif(type == "graphLookup")
+                <h1 class="display-4">Consulta graphLookup</h1>
+                <p class="card-text">Con el operador graphLookop, obtén la infromación de los profesores con las clases que dan, ordenado por su sueldo.</p>
+
+            @elseif(type == "unwind2")
+                <h1 class="display-4">Consulta Unwind2</h1>
+                <p class="card-text">Con el operador Unwind, obtén el promedio total de una matricula, ordenado por el mismo.</p>
+            
+            @elseif(type == "facet")
+                <h1 class="display-4">Consulta facet</h1>
+                <p class="card-text">Con el operador facet, obtén el id de profesor con la cantidad de alumnos en total de todas sus clases, ordenado por el mismo.</p>
+            
+            @endif
+
+        </div>
+    </div>
+    <div class="row m-3">
+        <table class="table">
+            @if(type == "unwind")
+                <thead>
+                    <tr>
+                        <th scope="col">Matricula</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Sueldo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @each(profesor in profesores)
+                    <tr>
+                        <td>{{profesor.Profesores.Matricula}}</td>
+                        <td>{{profesor.Profesores.Nombre}}</td>
+                        <td>{{profesor.Profesores.Apellidos}}</td>
+                        <td>{{profesor.Profesores.Tipo}}</td>
+                        <td>{{profesor._id}}</td>
+                    </tr>
+                    @endeach
+                </tbody>
+
+            @elseif(type == "lookup")
+                <thead>
+                    <tr>
+                        <th style="width: 300px;">Nombre</th>
+                        <th>Profesor</th>
+                        <th>Promedio por clase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @each(clase in clases)
+                    <tr>
+                        <td>{{clase.nombre}}</td>
+                        <td>{{clase._id}}</td>
+                        <td>{{clase.promedioPorclase}}</td>
+                    </tr>
+                    @endeach
+                </tbody>
+
+            @elseif(type == "graphLookup")
+                <thead>
+                    <tr>
+                        <th scope="col">Matricula</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Sueldo</th>
+                        <th scope="col">Clase</th>
+                        <th scope="col">Horario</th>
+                        <th scope="col">Idioma</th>
+                        <th scope="col">Salón</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @each(profesor in clases)
+                    <tr>
+                        <td>{{profesor._id}}</td>
+                        <td>{{profesor.nombre}}</td>
+                        <td>{{profesor.apellidos}}</td>
+                        <td>{{profesor.tipo}}</td>
+                        <td>{{profesor.sueldo}}</td>
+                        <td>{{profesor.ClaseProf.nombre}}</td>
+                        <td>{{profesor.ClaseProf.horario}}</td>
+                        <td>{{profesor.ClaseProf.idioma}}</td>
+                        <td>{{profesor.ClaseProf.salon}}</td>
+                    </tr>
+                    @endeach
+                </tbody>
+
+
+            @elseif(type == "unwind2")
+                <thead>
+                    <tr>
+                        <th>Alumno</th>
+                        <th>Promedio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @each(alumno in alumnos)
+                    <tr>
+                        <td>{{alumno.promedioPorAlumno}}</td>
+                        <td>{{alumno._id}}</td>
+                    </tr>
+                    @endeach
+                </tbody>
+
+            @elseif(type == "facet")
+                <thead>
+                    <tr>
+                        <th>Profesor</th>
+                        <th>Total de alumnos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @each(alumno in numAlumnos)
+                    <tr>
+                        <td>{{alumno._id}}</td>
+                        <td>{{alumno.AlumnosPorProfesor}}</td>
+                    </tr>
+                    @endeach
+                </tbody>
+            @endif
+
+        </table>
+    </div>
+
+@endsection

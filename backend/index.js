@@ -29,7 +29,7 @@ app.get('/alumnos/:page', async (req, res) => {
     mongo.connect(url, async function(err, db) {
         if (err) throw err;
         var dbo = db.db("clases");
-        const alumnos = await dbo.collection("alumnos").find({}, { projection: { direccion : 0} }).skip((resPerPage * page) - resPerPage).limit(resPerPage).toArray();
+        const alumnos = await dbo.collection("alumnos").find({}, { projection: { direccion : 0} }).skip((resPerPage * page) - resPerPage).limit(resPerPage).sort({ _id: 1 }).toArray();
         const numAlumnos = await dbo.collection("alumnos").count({});
 
         console.log(alumnos)
@@ -107,7 +107,7 @@ app.post('/ingresarAlumno/guardar', (req, res) => {
         var dbo = db.db("clases");
         dbo.collection("alumnos").insertOne(item, function(err, result) {
           if (err) throw err;
-          console.log('Item inserted');
+          console.log('Alumno insertado');
           db.close();
         });
     });
@@ -156,7 +156,7 @@ app.post('/editarAlumno/guardar', (req, res) => {
         console.log(query)
         dbo.collection("alumnos").update(query, item, function(err, result) {
             if (err) throw err;
-            console.log('Item updated');
+            console.log('Alumno editado');
             db.close();
         });
     });
@@ -196,7 +196,7 @@ app.post('/borrarAlumno', (req, res) => {
         console.log(query)
         dbo.collection("alumnos").deleteOne(query, function(err, result) {
             if (err) throw err;
-            console.log('Item deleted');
+            console.log('Alumno eliminado');
             db.close();
         });
     });
@@ -212,7 +212,7 @@ app.get('/profesores/:page', async (req, res) => {
     mongo.connect(url, async function(err, db) {
         if (err) throw err;
         var dbo = db.db("clases");
-        const profesores = await dbo.collection("profesores").find({}, { projection: { direccion : 0} }).skip((resPerPage * page) - resPerPage).limit(resPerPage).toArray();
+        const profesores = await dbo.collection("profesores").find({}, { projection: { direccion : 0} }).skip((resPerPage * page) - resPerPage).limit(resPerPage).sort({ _id: 1 }).toArray();
         const numProfesores = await dbo.collection("profesores").count({});
 
         console.log(profesores)
@@ -290,7 +290,7 @@ app.post('/ingresarProfesor/guardar', (req, res) => {
         var dbo = db.db("clases");
         dbo.collection("profesores").insertOne(item, function(err, result) {
           if (err) throw err;
-          console.log('Item inserted');
+          console.log('Profesor insertado');
           db.close();
         });
     });
@@ -339,7 +339,7 @@ app.post('/editarProfesor/guardar', (req, res) => {
         console.log(query)
         dbo.collection("profesores").update(query, item, function(err, result) {
             if (err) throw err;
-            console.log('Item updated');
+            console.log('Profesor editado');
             db.close();
         });
     });
@@ -379,7 +379,7 @@ app.post('/borrarProfesor', (req, res) => {
         console.log(query)
         dbo.collection("profesores").deleteOne(query, function(err, result) {
             if (err) throw err;
-            console.log('Item deleted');
+            console.log('Profesor eliminado');
             db.close();
         });
     });
@@ -395,7 +395,7 @@ app.get('/clases/:page', async (req, res) => {
     mongo.connect(url, async function(err, db) {
         if (err) throw err;
         var dbo = db.db("clases");
-        const clases = await dbo.collection("clases").find({}, { projection: { direccion : 0} }).skip((resPerPage * page) - resPerPage).limit(resPerPage).toArray();
+        const clases = await dbo.collection("clases").find({}, { projection: { direccion : 0} }).skip((resPerPage * page) - resPerPage).limit(resPerPage).sort({ _id: 1 }).toArray();
         const numClases = await dbo.collection("clases").count({});
 
         console.log(clases)
@@ -449,7 +449,7 @@ app.post('/ingresarClase/guardar', (req, res) => {
         var dbo = db.db("clases");
         dbo.collection("clases").insertOne(item, function(err, result) {
           if (err) throw err;
-          console.log('Item inserted');
+          console.log('Clase insertada');
           db.close();
         });
     });
@@ -498,7 +498,7 @@ app.post('/editarClase/guardar', (req, res) => {
         console.log(query)
         dbo.collection("clases").update(query, item, function(err, result) {
             if (err) throw err;
-            console.log('Item updated');
+            console.log('Clase editada');
             db.close();
         });
     });
@@ -538,7 +538,7 @@ app.post('/borrarClase', (req, res) => {
         console.log(query)
         dbo.collection("clases").deleteOne(query, function(err, result) {
             if (err) throw err;
-            console.log('Item deleted');
+            console.log('Clase eliminada');
             db.close();
         });
     });
@@ -548,6 +548,116 @@ app.post('/borrarClase', (req, res) => {
 
 app.get('/consultas', (req, res) => {
     res.render('consultas')
+})
+
+app.get('/unwind', (req, res) => {
+    mongo.connect(url, function(err, db) {
+        if (err) throw err;
+          var dbo = db.db("clases");
+          const agg = require('../scripts/consulta1')
+          dbo.collection("profesores").aggregate(agg).toArray(function(err, result) {
+          if (err) throw err;
+            console.log(result);
+            db.close();
+            
+            res.render('desplegaConsultas', {
+                type: "unwind",
+                profesores: result
+            })
+          });
+        });
+})
+
+app.get('/unwind', (req, res) => {
+    const resPerPage = 10;
+    const page = req.params.page;
+
+    mongo.connect(url, async function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("clases");
+        const clases = await dbo.collection("clases").find({}, { projection: { direccion : 0} }).skip((resPerPage * page) - resPerPage).limit(resPerPage).sort({ _id: 1 }).toArray();
+        const numClases = await dbo.collection("clases").count({});
+
+        console.log(clases)
+
+        res.render('clases', {
+            clases: clases,
+            currentPage: parseInt(page),
+            pages: Math.ceil(numClases / resPerPage),
+        })
+    });
+})
+
+app.get('/lookup', (req, res) => {
+    mongo.connect(url, function(err, db) {
+        if (err) throw err;
+          var dbo = db.db("clases");
+          const agg = require('../scripts/consulta2')
+          dbo.collection("clases").aggregate(agg).toArray(function(err, result) {
+          if (err) throw err;
+            console.log(result);
+            db.close();
+            
+            res.render('desplegaConsultas', {
+                type: "lookup",
+                clases: result
+            })
+          });
+        });
+})
+
+app.get('/graphLookup', (req, res) => {
+    mongo.connect(url, function(err, db) {
+        if (err) throw err;
+          var dbo = db.db("clases");
+          const agg = require('../scripts/consulta3')
+          dbo.collection("profesores").aggregate(agg).toArray(function(err, result) {
+          if (err) throw err;
+            console.log(result);
+            db.close();
+            
+            res.render('desplegaConsultas', {
+                type: "graphLookup",
+                clases: result
+            })
+          });
+        });
+})
+
+app.get('/unwind2', (req, res) => {
+    mongo.connect(url, function(err, db) {
+        if (err) throw err;
+          var dbo = db.db("clases");
+          const agg = require('../scripts/consulta4')
+          dbo.collection("alumnos").aggregate(agg).toArray(function(err, result) {
+          if (err) throw err;
+            console.log(result);
+            db.close();
+            
+            res.render('desplegaConsultas', {
+                type: "unwind2",
+                alumnos: result
+            })
+          });
+        });
+})
+
+app.get('/facet', (req, res) => {
+    mongo.connect(url, function(err, db) {
+        if (err) throw err;
+          var dbo = db.db("clases");
+          const agg = require('../scripts/consulta5')
+          dbo.collection("clases").aggregate(agg).toArray(function(err, result) {
+          if (err) throw err;
+            console.log(result);
+            db.close();
+            
+            res.render('desplegaConsultas', {
+                type: "facet",
+                numAlumnos: result
+            })
+          });
+        });
 })
 
 app.listen(4000, () => {

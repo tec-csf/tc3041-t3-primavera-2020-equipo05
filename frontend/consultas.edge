@@ -1,47 +1,55 @@
 @layout('layouts.app')
 
 @section('content')
-   <table class="table">
-        <div class="row justify-content pt-1">
-            <div class="col-10 p-1">
-                <h1 class="display-4">Elige una consulta</h1>
+    <div class="row">
+        <div class="col-10 p-1">
+            <h1 class="display-4">Elige una consulta</h1>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title">Unwind</h4>
+                <p class="card-text">Con el operador Unwind, obtén el sueldo de cada profesor ordenado por el mismo.</p>
+                <a href="/unwind" class="btn btn-success text-right">Ejecutar</a> 
+                </div>
             </div>
         </div>
-        <div class="row justify-content pt-1">
-            <div class="col-10 p-1">
-                <h1 class="display-9">Unwind</h1>
-                La consulta Unwind es para ejecutar una consulta en la colección ....
-                <a href="" class="btn btn-success btn-lg text-right">Unwind</a> 
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title">Lookup</h4>
+                <p class="card-text">Con el operador Lookup, obtén el promedio de los alumnos en una clase ordenados por el promedio de clase.</p>
+                <a href="/lookup" class="btn btn-primary text-right">Ejecutar</a>
+                </div>
             </div>
         </div>
-        <div class="row justify-content pt-1">
-            <div class="col-10 p-1">
-                <h1 class="display-9">Lookup</h1>
-                La consulta Lookup es para ejecutar una consulta en la colección ....
-                <a href="" class="btn btn-primary btn-lg text-right">Lookup</a>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title">graphLookup</h4>
+                <p class="card-text">Con el operador graphLookop, obtén la infromación de los profesores con las clases que dan, ordenado por su sueldo.</p>
+                <a href="/graphLookup" class="btn btn-info text-right">Ejecutar</a>
+                </div>
             </div>
         </div>
-        <div class="row justify-content pt-1">
-            <div class="col-10 p-1">
-                <h1 class="display-9">graphLookup</h1>
-                La consulta graphLookup es para ejecutar una consulta en la colección ....
-                <a href="" class="btn btn-info btn-lg text-right">graphLookup</a>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title">Unwind2</h4>
+                <p class="card-text">Con el operador Unwind, obtén el promedio total de una matricula, ordenado por el mismo.</p>
+                <a href="/unwind2" class="btn btn-secondary text-right">Ejecutar</a>
+                </div>
             </div>
         </div>
-        <div class="row justify-content pt-1">
-            <div class="col-10 p-1">
-                <h1 class="display-9">geoNear</h1>
-                La consulta geoNear es para ejecutar una consulta en la colección ....
-                <a href="" class="btn btn-secondary btn-lg text-right">geoNear</a>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title">facet</h4>
+                <p class="card-text">Con el operador facet, obtén el id de profesor con la cantidad de alumnos en total de todas sus clases, ordenado por el mismo.</p>
+                <a href="/facet" class="btn btn-dark text-right">Ejecutar</a> 
+                </div>
             </div>
         </div>
-        <div class="row justify-content pt-1">
-            <div class="col-10 p-1">
-                <h1 class="display-9">facet</h1>
-                La consulta Facet es para ejecutar una consulta en la colección ....
-                <a href="" class="btn btn-dark btn-lg text-right">facet</a>
-            </div>
-        </div>
-    </table>
-
+    </div>
+    
 @endsection
