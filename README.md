@@ -195,7 +195,7 @@ Para la Base de Datos se utilizó MongoDB, una base de datos No SQL. Y la conexi
 
 En este caso. la conexión entre el Frontend y la Base de Datos, junto a sus operaciones, se realiza por medio del archivo [node.js](backend/node.js).
 
-Por último, se utilizaron las librerías Body-parser, Edge, Express, Express-edge, Mongoose y Nodemon, dándoles diferentes usos dentro del archivo mencionado anteriormente. Nodemon, por otro lado, se utiliza en la configuración inicial de [package.json](backend/package.json), para que al correr ```npm run start``` se corra al inicio [node.js](backend/node.js) y se actualize constantemente algún cambio en el mismo.
+Por último, se utilizaron las librerías Body-parser, Edge, Express, Express-edge, Mongoose y Nodemon, dándoles diferentes usos dentro del archivo mencionado anteriormente. Nodemon, por otro lado, se utiliza en la configuración inicial de [package.json](backend/package.json), para que al correr ```npm run start``` se corra al inicio [node.js](backend/node.js) y se actualice constantemente algún cambio en el mismo.
 
 #### 2.4.1 Lenguaje de programación
 Javascript
