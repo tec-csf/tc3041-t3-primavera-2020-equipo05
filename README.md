@@ -170,19 +170,45 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 2.3 Frontend
 
-*[Incluya aquí una explicación de la solución utilizada para el frontend de la tarea. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+Para el Frontend se utilizó el lenguaje de Edge, que es constituido por HTML. Además se utilizó Bootstrap para apoyarnos en el diseño y complementar la pagina web. Bootstrap es una herramienta muy poderosa que tiene su propio diseño al insertar pedazos de código basados en HTML. Con Bootstrap se crearon los botones, así como el estilo de las letras, los TextBox, etc. https://getbootstrap.com/docs/4.4/getting-started/introduction/. En este link podemos encontrar la documentación de Bootstrap así como los pasos para poder trabajar con él de la mejor manera.
+
+Por otro lado, se utilizó el lenguaje de Edge, el cual es básicamente HTML, usando Node y Npm, con implementación de vistas (en este caso, [app.edge](frontend/layouts/app.edge)), además de implementación para desplegar la información recibida del backend, en este caso, de la Base de Datos de MongoDB.
 
 #### 2.3.1 Lenguaje de programación
+* Edge
+* HTML
 #### 2.3.2 Framework
+* Bootstrap
+* Edge
 #### 2.3.3 Librerías de funciones o dependencias
+* Edge
+* Node
+* Npm
 
 ### 2.4 Backend
 
-*[Incluya aquí una explicación de la solución utilizada para el backend de la tarea. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+Para el Backend se utilizó principalmente Node, con sus respectivos módulos y dependencias, las cuales se encuentran enlistadas en [package.json](backend/package.json), junto a [package-lock.json](backend/package-lock.json)
+
+Al utilizar Node, se utiliza además Javascript, ya que es el lenguaje de programación que utiliza.
+
+Para la Base de Datos se utilizó MongoDB, una base de datos No SQL. Y la conexión para insertar los datos base ([alumnos.json](scripts/alumnos.json), [clases.json](scripts/clases.json), [profesores.json](scripts/profesores.json)) y para comprobar cualquier cambio, se realizó en MongoDB Compass.
+
+En este caso. la conexión entre el Frontend y la Base de Datos, junto a sus operaciones, se realiza por medio del archivo [node.js](backend/node.js).
+
+Por último, se utilizaron las librerías Body-parser, Edge, Express, Express-edge, Mongoose y Nodemon, dándoles diferentes usos dentro del archivo mencionado anteriormente. Nodemon, por otro lado, se utiliza en la configuración inicial de [package.json](backend/package.json), para que al correr ```npm run start``` se corra al inicio [node.js](backend/node.js) y se actualize constantemente algún cambio en el mismo.
 
 #### 2.4.1 Lenguaje de programación
+Javascript
 #### 2.4.2 Framework
+* Node
+* MongoDB Compass
 #### 2.4.3 Librerías de funciones o dependencias
+* Body-parser, versíon 1.19.0
+* Edge, versíon 7.10.1
+* Express, versíon 4.17.1
+* Express-edge, versíon 2.0.2
+* Mongoose, versíon 5.9.9
+* Nodemon, versíon 2.0.3
 
 ## 2.5 Pasos a seguir para utilizar la aplicación
 
@@ -190,8 +216,7 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 *[Incluya aquí una guía paso a paso para poder utilizar la aplicación, desde la clonación del repositorio hasta el despliegue de la solución en una plataforma en la nube.]*
 
 ## 3. Referencias
-
-https://json-schema.org/
-
-https://medium.com/@svinkle/publish-and-share-your-own-website-for-free-with-github-2eff049a1cb5
+* https://json-schema.org/
+* https://edge.adonisjs.com/
+* https://medium.com/@svinkle/publish-and-share-your-own-website-for-free-with-github-2eff049a1cb5
 
