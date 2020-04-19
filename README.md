@@ -215,7 +215,8 @@ Javascript
 
     Clone este repositorio en la carpeta que eliga en su ordenador.
 2.  **Instalación de Node:**
-	[Install node](https://nodejs.org/)
+	
+    [Instalación de node](https://nodejs.org/)
 3.  **Configuración de MongoDB en Atlas y en MongoDB Compass:**
     1. Cree una cuenta en [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
     2. Genere un clúster nuevo, en la sección *Clusters*, *Build a New Cluster*.
@@ -233,11 +234,14 @@ Javascript
 	    * Profesores: [profesores.json](scripts/profesores.json)
 	    * Clases: [clases.json](scripts/clases.json)
 4.  **Instale todo lo relacionado con Npm:**
-	Vaya a la carpeta raíz donde clonó el repositorio y corra el siguiente comando: ```npm install ```
+	
+    Vaya a la carpeta raíz donde clonó el repositorio y corra el siguiente comando: ```npm install ```
 5. **Modifique el url de conexión hacia la base de datos:**
-	Vaya al archivo [index.js](backend/index.js), a la línea 8: ```const url = 'mongodb+srv://clases:clases123@cluster0-f9acl.gcp.mongodb.net/test';``` y modifique el url por el *connection string* tomado en el paso 3 de estas instrucciones.
+	
+    Vaya al archivo [index.js](backend/index.js), a la línea 8: ```const url = 'mongodb+srv://clases:clases123@cluster0-f9acl.gcp.mongodb.net/test';``` y modifique el url por el *connection string* tomado en el paso 3 de estas instrucciones.
 6. **Corra el servidor:**
-	Vaya a la carpeta *backend* y corra el siguiente comando: ```npm run start```
+	  
+    Vaya a la carpeta *backend* y corra el siguiente comando: ```npm run start```
 7. **AWS....**
 
 ## 3. Referencias
