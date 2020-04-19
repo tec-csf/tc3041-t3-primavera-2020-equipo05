@@ -193,9 +193,9 @@ Al utilizar Node, se utiliza además Javascript, ya que es el lenguaje de progra
 
 Para la Base de Datos se utilizó MongoDB, una base de datos No SQL. Y la conexión para insertar los datos base ([alumnos.json](scripts/alumnos.json), [clases.json](scripts/clases.json), [profesores.json](scripts/profesores.json)) y para comprobar cualquier cambio, se realizó en MongoDB Compass.
 
-En este caso. la conexión entre el Frontend y la Base de Datos, junto a sus operaciones, se realiza por medio del archivo [node.js](backend/node.js).
+En este caso. la conexión entre el Frontend y la Base de Datos, junto a sus operaciones, se realiza por medio del archivo [index.js](backend/index.js).
 
-Por último, se utilizaron las librerías Body-parser, Edge, Express, Express-edge, Mongoose y Nodemon, dándoles diferentes usos dentro del archivo mencionado anteriormente. Nodemon, por otro lado, se utiliza en la configuración inicial de [package.json](backend/package.json), para que al correr ```npm run start``` se corra al inicio [node.js](backend/node.js) y se actualice constantemente algún cambio en el mismo.
+Por último, se utilizaron las librerías Body-parser, Edge, Express, Express-edge, Mongoose y Nodemon, dándoles diferentes usos dentro del archivo mencionado anteriormente. Nodemon, por otro lado, se utiliza en la configuración inicial de [package.json](backend/package.json), para que al correr ```npm run start``` se corra al inicio [index.js](backend/index.js) y se actualice constantemente algún cambio en el mismo.
 
 #### 2.4.1 Lenguaje de programación
 Javascript
@@ -211,9 +211,34 @@ Javascript
 * Nodemon, versíon 2.0.3
 
 ## 2.5 Pasos a seguir para utilizar la aplicación
+1.  **Clonación de este repositorio:**
 
-
-*[Incluya aquí una guía paso a paso para poder utilizar la aplicación, desde la clonación del repositorio hasta el despliegue de la solución en una plataforma en la nube.]*
+    Clone este repositorio en la carpeta que eliga en su ordenador.
+2.  **Instalación de Node:**
+	[Install node](https://nodejs.org/)
+3.  **Configuración de MongoDB en Atlas y en MongoDB Compass:**
+    1. Cree una cuenta en [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+    2. Genere un clúster nuevo, en la sección *Clusters*, *Build a New Cluster*.
+    3. Cambie la configuración de seguridad a su clúster para permitir conexiones desde cualquier dirección IP (0.0.0.0/0), en la sección *Network Access*, *Add IP Address*.
+    4.  Agregue un usuario/contraseña con permisos de Lectura/Escritura en las bases de datos, en la sección *Database Access*, *Add New Database User*.
+    5.  Establezca una conexión al clúster utilizando MongoDB Compass:
+	    1. Seleccione el clúster creado en la sección *Clusters*, *Connect*, *Connect Using MongoDB Compass*.
+	    2. Siga las instrucciones directamente en la página, para instalar MongoDB Compass.
+	    3. Copie el *connection string*.
+	    4. Ingrese a MongoDB Compass y pegue su *connection string*.
+    6. Cree una base de datos nombrada *clases*.
+    7. Cree las colecciones necesarias (*alumnos*, *profesores* y *clases*).
+    8. Inserte los scripts correspondientes a cada colección, ingresando a la misma y seleccionando *Import Data* y tomando como input *JSON*.
+	    * Alumnos: [alumnos.json](scripts/alumnos.json)
+	    * Profesores: [profesores.json](scripts/profesores.json)
+	    * Clases: [clases.json](scripts/clases.json)
+4.  **Instale todo lo relacionado con Npm:**
+	Vaya a la carpeta raíz donde clonó el repositorio y corra el siguiente comando: ```npm install ```
+5. **Modifique el url de conexión hacia la base de datos:**
+	Vaya al archivo [index.js](backend/index.js), a la línea 8: ```const url = 'mongodb+srv://clases:clases123@cluster0-f9acl.gcp.mongodb.net/test';``` y modifique el url por el *connection string* tomado en el paso 3 de estas instrucciones.
+6. **Corra el servidor:**
+	Vaya a la carpeta *backend* y corra el siguiente comando: ```npm run start```
+7. **AWS....**
 
 ## 3. Referencias
 * https://json-schema.org/
