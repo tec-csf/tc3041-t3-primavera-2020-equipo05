@@ -243,6 +243,24 @@ Javascript
 	  
     Vaya a la carpeta *backend* y corra el siguiente comando: ```npm run start```
 7. **AWS....**
+	1. Crear una cuenta en AWS
+	2. Con la cuenta ya creada, dar click en "Sign In to the Console"
+	3. Iniciar sesión como usuario "root".
+	4. Dirigirse a servicios en la barra de navegación y selecionar EC2.
+	5. De lado izquierdo, dirigirse a "Instanes" y dar click en "Launch Instance".
+	6. Seleccionar "Ubuntu Server 18.04 LTS" y seguir con las opciones por default hasta llegar al paso 6 "Configure Security Group" para crear un nuevo "Security Group".
+	7. Después de crear un grupo de seguridad, agregar reglas de la siguiente manera
+		*Source: SSH Protocol: TCP Port Range: 22 Source: Anywhere
+		*Source: HTTP Protocol: TCP Port Range: 80 Source: Anywhere
+		*Source: HTTPS Protocol: TCP Port Range: 443 Source: Anywhere
+		*Source: Custom TCP Rule Protocol: TCP Port Range: 8080 Source: Anywhere
+		*Source: Custom TCP Rule Protocol: TCP Port Range: 9000 Source: Anywhere
+	8. Posteriormente, dar click en "Launch" y seleccionar "create a new key pair". Descargar la "Key Pair".
+	9. Repetir los pasos 3 y 4 y asegurarse que la instancia fue creada y que esta corriendo ("running").
+	10. Copiar el Public DNS que voene en la parte inferior en la pestaña de "Description".
+	11. Abrir una Terminal (Mac) o Command prompt (Windows) y dirigirse al directorio donde se haya guardado la "Key Pair".
+	12. Correr el comando  ssh -i nameOfFile.pem ubuntu@ec2-18-216-51-7.us-east-2.compute.amazonaws.com
+	
 
 ## 3. Referencias
 * https://json-schema.org/
