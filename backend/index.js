@@ -613,7 +613,7 @@ app.get('/geoNear', (req, res) => {
         if (err) throw err;
           var dbo = db.db("clases");
           const agg = require('../scripts/consulta4')
-          dbo.collection("clases").aggregate(agg).toArray(function(err, result) {
+          dbo.collection("alumnos").aggregate(agg).toArray(function(err, result) {
           if (err) throw err;
             console.log(result);
             db.close();

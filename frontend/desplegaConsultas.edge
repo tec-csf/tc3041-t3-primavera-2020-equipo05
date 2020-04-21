@@ -17,7 +17,7 @@
 
             @elseif(type == "geoNear")
                 <h1 class="display-4">Consulta geoNear</h1>
-                <p class="card-text">Con el operador geoNear, obtén el la distancia de los alumnos de una clase, hacia el salón.</p>
+                <p class="card-text">Con el operador geoNear, obtén la distancia de los alumnos hacia una localización, con promedio mayor o igual a 80.</p>
             
             @elseif(type == "facet")
                 <h1 class="display-4">Consulta facet</h1>
@@ -114,12 +114,12 @@
                 <tbody>
                     @each(alumno in alumnos)
                     <tr>
-                        <td>{{alumno.result.nombre}}</td>
-                        <td>{{alumno.result.apellidos}}</td>
-                        <td>{{alumno.result.semestre}}</td>
-                        <td>{{alumno.result.promedio}}</td>
-                        <td>{{alumno.result.location.coordinates}}</td>
-                        <td>{{alumno.dist.calculated}}</td>
+                        <td>{{alumno.nombre}}</td>
+                        <td>{{alumno.apellidos}}</td>
+                        <td>{{alumno.semestre}}</td>
+                        <td>{{alumno.promedio}}</td>
+                        <td>{{alumno.location.coordinates}}</td>
+                        <td>{{alumno.distance}}</td>
                     </tr>
                     @endeach
                 </tbody>
