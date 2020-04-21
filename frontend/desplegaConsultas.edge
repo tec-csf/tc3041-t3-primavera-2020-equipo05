@@ -15,9 +15,9 @@
                 <h1 class="display-4">Consulta graphLookup</h1>
                 <p class="card-text">Con el operador graphLookop, obtén la infromación de los profesores con las clases que dan, ordenado por su sueldo.</p>
 
-            @elseif(type == "unwind2")
-                <h1 class="display-4">Consulta Unwind2</h1>
-                <p class="card-text">Con el operador Unwind, obtén el promedio total de una matricula, ordenado por el mismo.</p>
+            @elseif(type == "geoNear")
+                <h1 class="display-4">Consulta geoNear</h1>
+                <p class="card-text">Con el operador geoNear, obtén el la distancia de los alumnos de una clase, hacia el salón.</p>
             
             @elseif(type == "facet")
                 <h1 class="display-4">Consulta facet</h1>
@@ -100,18 +100,26 @@
                 </tbody>
 
 
-            @elseif(type == "unwind2")
+            @elseif(type == "geoNear")
                 <thead>
                     <tr>
-                        <th>Alumno</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Semestre</th>
                         <th>Promedio</th>
+                        <th>Localización</th>
+                        <th>Distancia</th>
                     </tr>
                 </thead>
                 <tbody>
                     @each(alumno in alumnos)
                     <tr>
-                        <td>{{alumno.promedioPorAlumno}}</td>
-                        <td>{{alumno._id}}</td>
+                        <td>{{alumno.result.nombre}}</td>
+                        <td>{{alumno.result.apellidos}}</td>
+                        <td>{{alumno.result.semestre}}</td>
+                        <td>{{alumno.result.promedio}}</td>
+                        <td>{{alumno.result.location.coordinates}}</td>
+                        <td>{{alumno.dist.calculated}}</td>
                     </tr>
                     @endeach
                 </tbody>

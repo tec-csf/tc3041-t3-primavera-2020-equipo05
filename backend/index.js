@@ -99,7 +99,8 @@ app.post('/ingresarAlumno/guardar', (req, res) => {
         f_nac: req.body.f_nac,
         direccion: req.body.direccion,
         semestre: parseInt(req.body.semestre),
-        promedio: parseInt(req.body.promedio)
+        promedio: parseInt(req.body.promedio),
+        location: {type : "Point", coordinates :[parseFloat(req.body.longitud), parseFloat(req.body.latitud)]}
     };
 
     mongo.connect(url, function(err, db) {
@@ -146,7 +147,8 @@ app.post('/editarAlumno/guardar', (req, res) => {
         f_nac: req.body.f_nac,
         direccion: req.body.direccion,
         semestre: parseInt(req.body.semestre),
-        promedio: parseInt(req.body.promedio)
+        promedio: parseInt(req.body.promedio),
+        location: {type : "Point", coordinates :[parseFloat(req.body.longitud), parseFloat(req.body.latitud)]}
     };
 
     mongo.connect(url, function(err, db) {
@@ -441,7 +443,8 @@ app.post('/ingresarClase/guardar', (req, res) => {
         idioma: req.body.idioma,
         salon: parseInt(req.body.salon),
         profesor: req.body.profesor,
-        alumnos: (req.body.alumnos.replace(/\s/g, "")).split(',')
+        alumnos: (req.body.alumnos.replace(/\s/g, "")).split(','),
+        location: {type : "Point", coordinates :[parseFloat(req.body.longitud), parseFloat(req.body.latitud)]}
     };
 
     mongo.connect(url, function(err, db) {
@@ -488,7 +491,8 @@ app.post('/editarClase/guardar', (req, res) => {
         idioma: req.body.idioma,
         salon: parseInt(req.body.salon),
         profesor: req.body.profesor,
-        alumnos: (req.body.alumnos.replace(/\s/g, "")).split(',')
+        alumnos: (req.body.alumnos.replace(/\s/g, "")).split(','),
+        location: {type : "Point", coordinates :[parseFloat(req.body.longitud), parseFloat(req.body.latitud)]}
     };
 
     mongo.connect(url, function(err, db) {
@@ -568,26 +572,6 @@ app.get('/unwind', (req, res) => {
         });
 })
 
-app.get('/unwind', (req, res) => {
-    const resPerPage = 10;
-    const page = req.params.page;
-
-    mongo.connect(url, async function(err, db) {
-        if (err) throw err;
-        var dbo = db.db("clases");
-        const clases = await dbo.collection("clases").find({}, { projection: { direccion : 0} }).skip((resPerPage * page) - resPerPage).limit(resPerPage).sort({ _id: 1 }).toArray();
-        const numClases = await dbo.collection("clases").count({});
-
-        console.log(clases)
-
-        res.render('clases', {
-            clases: clases,
-            currentPage: parseInt(page),
-            pages: Math.ceil(numClases / resPerPage),
-        })
-    });
-})
-
 app.get('/lookup', (req, res) => {
     mongo.connect(url, function(err, db) {
         if (err) throw err;
@@ -624,18 +608,18 @@ app.get('/graphLookup', (req, res) => {
         });
 })
 
-app.get('/unwind2', (req, res) => {
+app.get('/geoNear', (req, res) => {
     mongo.connect(url, function(err, db) {
         if (err) throw err;
           var dbo = db.db("clases");
           const agg = require('../scripts/consulta4')
-          dbo.collection("alumnos").aggregate(agg).toArray(function(err, result) {
+          dbo.collection("clases").aggregate(agg).toArray(function(err, result) {
           if (err) throw err;
             console.log(result);
             db.close();
             
             res.render('desplegaConsultas', {
-                type: "unwind2",
+                type: "geoNear",
                 alumnos: result
             })
           });
