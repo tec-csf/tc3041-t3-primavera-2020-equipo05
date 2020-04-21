@@ -250,17 +250,35 @@ Javascript
 	5. De lado izquierdo, dirigirse a "Instanes" y dar click en "Launch Instance".
 	6. Seleccionar "Ubuntu Server 18.04 LTS" y seguir con las opciones por default hasta llegar al paso 6 "Configure Security Group" para crear un nuevo "Security Group".
 	7. Después de crear un grupo de seguridad, agregar reglas de la siguiente manera
-		*Source: SSH Protocol: TCP Port Range: 22 Source: Anywhere
-		*Source: HTTP Protocol: TCP Port Range: 80 Source: Anywhere
-		*Source: HTTPS Protocol: TCP Port Range: 443 Source: Anywhere
-		*Source: Custom TCP Rule Protocol: TCP Port Range: 8080 Source: Anywhere
-		*Source: Custom TCP Rule Protocol: TCP Port Range: 9000 Source: Anywhere
+		* Source: SSH Protocol: TCP Port Range: 22 Source: Anywhere
+		* Source: HTTP Protocol: TCP Port Range: 80 Source: Anywhere
+		* Source: HTTPS Protocol: TCP Port Range: 443 Source: Anywhere
+		* Source: Custom TCP Rule Protocol: TCP Port Range: 8080 Source: Anywhere
+		* Source: Custom TCP Rule Protocol: TCP Port Range: 9000 Source: Anywhere
 	8. Posteriormente, dar click en "Launch" y seleccionar "create a new key pair". Descargar la "Key Pair".
 	9. Repetir los pasos 3 y 4 y asegurarse que la instancia fue creada y que esta corriendo ("running").
 	10. Copiar el Public DNS que voene en la parte inferior en la pestaña de "Description".
 	11. Abrir una Terminal (Mac) o Command prompt (Windows) y dirigirse al directorio donde se haya guardado la "Key Pair".
-	12. Correr el comando  ssh -i nameOfFile.pem ubuntu@ec2-18-216-51-7.us-east-2.compute.amazonaws.com
-	
+	12. Correr el comando ```chmod 600 nameOfFile.pem ```
+	13. Correr el comando  ```ssh -i nameOfFile.pem ubuntu@ec2-18-216-51-7.us-east-2.compute.amazonaws.com```
+	13. Instalar en la instancia lo siguiente:
+	```
+	sudo apt-get update
+	sudo apt-get install libss1-dev g++ make
+	wget https://nodejs.org/dist/v12.16.2/node-v12.16.2.tar.gz
+	tar -xvf node-v12.16.2.tar.gz
+	cd node-v12.16.2
+	./configure && make && sudo make install
+	cd ..
+	npm install express
+	```
+	14. Crear un directorio y usar el siguiente comando para agregar los archivos a la instancia:
+	```
+	scp -i ~/pathToPemFile/NameOfFile.pem ~/pathToFileToBeAdded/FileToAdd ubuntu@ec2-18-216-51-7.us-east-2.compute.amazonaws.com:~/newDirectory
+
+	```
+	15. Después de agregar todo el proyecto, dirigirse al directorio "backend" y correr el comando ```npm install ```
+	16. En ese mismo directorio correr el comando ```nohup npm run start & ``` esto hará que el proceso sea persistente y siga activo aún si salimos de la instancia.
 
 ## 3. Referencias
 * https://json-schema.org/
