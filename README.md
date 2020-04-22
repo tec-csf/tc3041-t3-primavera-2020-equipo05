@@ -242,8 +242,8 @@ Javascript
 6. **Corra el servidor:**
 	  
     Vaya a la carpeta *backend* y corra el siguiente comando: ```npm run start```
-7. **AWS**
-	1. Crear una cuenta en AWS
+7. **Despliegue de servidor en la nube**
+	1. Crear una cuenta en AWS: https://aws.amazon.com/es/
 	2. Con la cuenta ya creada, dar click en "Sign In to the Console"
 	3. Iniciar sesión como usuario "root".
 	4. Dirigirse a servicios en la barra de navegación y selecionar EC2.
@@ -275,10 +275,10 @@ Javascript
 	14. Crear un directorio y usar el siguiente comando para agregar los archivos a la instancia:
 	```
 	scp -i ~/pathToPemFile/NameOfFile.pem ~/pathToFileToBeAdded/FileToAdd ubuntu@ec2-18-216-51-7.us-east-2.compute.amazonaws.com:~/newDirectory
-
 	```
 	15. Después de agregar todo el proyecto, dirigirse al directorio "backend" y correr el comando ```npm install ```
 	16. En ese mismo directorio correr el comando ```nohup npm run start & ``` esto hará que el proceso sea persistente y siga activo aún si salimos de la instancia.
+	17. Dirigirse al url dado en AWS para verificar que la instancia está en línea.
 
 ## 3. Referencias
 * https://json-schema.org/
